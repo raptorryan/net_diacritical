@@ -14,6 +14,7 @@
   NetDiacriticalWeb: [
     NetDiacriticalWeb,
     NetDiacriticalWeb.Controller,
+    NetDiacriticalWeb.Controller.Page,
     NetDiacriticalWeb.Endpoint,
     NetDiacriticalWeb.TXT,
     NetDiacriticalWeb.TXT.Page

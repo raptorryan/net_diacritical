@@ -5,6 +5,7 @@ defmodule NetDiacriticalWeb do
   use Boundary,
     deps: [
       EEx.Engine,
+      Logger,
       NetDiacritical,
       Phoenix,
       Phoenix.PubSub,

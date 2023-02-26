@@ -4,8 +4,11 @@ defmodule NetDiacriticalWeb.Endpoint do
 
   use Phoenix.Endpoint, otp_app: :net_diacritical
 
-  alias NetDiacritical, as: Core
   alias NetDiacriticalWeb, as: Web
+
+  alias Web.Controller
+
+  alias Controller.Page
 
   @typedoc "Represents the connection."
   @typedoc since: "0.1.0"
@@ -20,10 +23,10 @@ defmodule NetDiacriticalWeb.Endpoint do
 
   ## Example
 
-      iex> c = c_request_path_hello(%{})
+      iex> c = c_request_path_hello()
       iex> %{conn: %{valid: conn}} = c_conn(c)
-      iex> %{opt: opt} = c_opt(%{})
-      iex> %{status: %{ok: status}} = c_status_ok(%{})
+      iex> %{opt: opt} = c_opt()
+      iex> %{status: %{ok: status}} = c_status_ok()
       iex> %{resp_body: resp_body} = c_resp_body_hello()
       iex>
       iex> text_response(hello(conn, opt), status)
@@ -33,7 +36,7 @@ defmodule NetDiacriticalWeb.Endpoint do
   @doc since: "0.1.0"
   @spec hello(conn(), opt()) :: conn()
   def hello(%Plug.Conn{} = conn, _opt) do
-    Phoenix.Controller.text(conn, Core.greet() <> "\n")
+    conn |> Phoenix.Controller.accepts(["txt", "text"]) |> Page.call(:hello)
   end
 
   plug :hello

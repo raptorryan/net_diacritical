@@ -2,6 +2,16 @@ defmodule NetDiacriticalWeb.Controller do
   @moduledoc "Defines commonalities for `Phoenix.Controller` controllers."
   @moduledoc since: "0.2.0"
 
+  alias NetDiacriticalWeb, as: Web
+
+  @typedoc "Represents the connection."
+  @typedoc since: "0.2.0"
+  @type conn() :: Web.conn()
+
+  @typedoc "Represents the connection option."
+  @typedoc since: "0.2.0"
+  @type opt() :: Web.opt()
+
   @doc """
   In `use`, calls `use Phoenix.Controller`, then stores the associated view.
 
@@ -20,7 +30,7 @@ defmodule NetDiacriticalWeb.Controller do
       iex>
       iex> c = c_conn()
       iex> %{conn: %{valid: c!}} = c_conn_format_txt(c)
-      iex> %{action: %{valid: action}} = c_action_hello(%{})
+      iex> %{action: %{valid: action}} = c_action_hello()
       iex> conn = TestController.call(c!, action)
       iex>
       iex> Phoenix.Controller.layout(conn)

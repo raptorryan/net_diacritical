@@ -52,11 +52,6 @@ defmodule NetDiacriticalWeb.EndpointTest do
     %{uri: %{string: URI.to_string(struct), struct: struct}}
   end
 
-  @spec c_request_path_hello(context()) :: context_merge()
-  defp c_request_path_hello(c) when is_map(c) do
-    %{request_path: "/hello"}
-  end
-
   @spec c_path(context()) :: context_merge()
   defp c_path(%{config: [{key, [path: path]}], request_path: request_path})
        when is_atom(key) and is_binary(path) and is_binary(request_path) do
@@ -81,16 +76,6 @@ defmodule NetDiacriticalWeb.EndpointTest do
   @spec c_err(context()) :: context_merge()
   defp c_err(c) when is_map(c) do
     %{err: {:error, {:already_started, Process.whereis(Endpoint)}}}
-  end
-
-  @spec c_opt(context()) :: context_merge()
-  defp c_opt(c) when is_map(c) do
-    %{opt: []}
-  end
-
-  @spec c_status_ok(context()) :: context_merge()
-  defp c_status_ok(c) when is_map(c) do
-    %{status: %{ok: 200}}
   end
 
   @spec c_topic_pubsub(context()) :: context_merge()

@@ -95,6 +95,24 @@ defmodule NetDiacriticalCase.ConnTest do
     end
   end
 
+  describe "c_conn_script_name/1" do
+    import Conn, only: [c_conn_script_name: 1]
+
+    setup do
+      %{context: %{invalid: %{conn: %{}}, valid: %{conn: %{invalid: %{}}}}}
+    end
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_conn_script_name(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{conn: _conn} = c_conn_script_name(context.valid)
+    end
+  end
+
   describe "c_request_path_hello/0" do
     import Conn, only: [c_request_path_hello: 0]
 

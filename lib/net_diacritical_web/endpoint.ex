@@ -6,7 +6,7 @@ defmodule NetDiacriticalWeb.Endpoint do
 
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.Controller
+  alias Web.{Controller, Router}
 
   alias Controller.Page
 
@@ -39,5 +39,5 @@ defmodule NetDiacriticalWeb.Endpoint do
     conn |> Phoenix.Controller.accepts(["txt", "text"]) |> Page.call(:hello)
   end
 
-  plug :hello
+  plug Router
 end

@@ -72,6 +72,20 @@ defmodule NetDiacriticalCase.Conn do
 
   ## Example
 
+      iex> %{conn: _conn} = c_conn_script_name(%{conn: %{invalid: %{}}})
+
+  """
+  @doc since: "0.2.0"
+  @spec c_conn_script_name(context()) :: context_merge()
+  def c_conn_script_name(%{conn: %{invalid: conn} = c}) when is_map(conn) do
+    %{conn: %{c | invalid: Map.merge(conn, %{script_name: nil})}}
+  end
+
+  @doc """
+  Defines a map of fixtures to be merged into an `ExUnit` context.
+
+  ## Example
+
       iex> %{opt: _opt} = c_opt()
 
   """

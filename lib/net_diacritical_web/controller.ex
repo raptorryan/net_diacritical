@@ -4,6 +4,8 @@ defmodule NetDiacriticalWeb.Controller do
 
   alias NetDiacriticalWeb, as: Web
 
+  alias Web.{Endpoint, Router}
+
   @typedoc "Represents the connection."
   @typedoc since: "0.2.0"
   @type conn() :: Web.conn()
@@ -43,6 +45,7 @@ defmodule NetDiacriticalWeb.Controller do
   defmacro __using__(opt) when is_list(opt) do
     quote bind_quoted: [opt: opt] do
       use Phoenix.Controller, Keyword.merge([put_default_views: false], opt)
+      use Phoenix.VerifiedRoutes, endpoint: Endpoint, router: Router
 
       plug :put_new_view, opt[:view]
     end

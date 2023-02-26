@@ -2,6 +2,10 @@ defmodule NetDiacriticalWeb.TXT do
   @moduledoc "Defines commonalities for `Phoenix.Template` templates."
   @moduledoc since: "0.2.0"
 
+  alias NetDiacriticalWeb, as: Web
+
+  alias Web.{Endpoint, Router}
+
   @doc """
   Compiles a function for each template in the given `pattern`.
 
@@ -49,6 +53,8 @@ defmodule NetDiacriticalWeb.TXT do
   @doc since: "0.2.0"
   defmacro __using__(opt) when is_list(opt) do
     quote do
+      use Phoenix.VerifiedRoutes, endpoint: Endpoint, router: Router
+
       import unquote(__MODULE__)
     end
   end

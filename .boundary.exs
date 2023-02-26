@@ -10,5 +10,9 @@
     NetDiacriticalCase.Template,
     NetDiacriticalCase.View
   ],
-  NetDiacriticalWeb: [NetDiacriticalWeb, NetDiacriticalWeb.Endpoint]
+  NetDiacriticalWeb: [
+    NetDiacriticalWeb,
+    NetDiacriticalWeb.Endpoint,
+    NetDiacriticalWeb.TXT
+  ]
 ]

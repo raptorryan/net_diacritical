@@ -24,7 +24,7 @@ defmodule NetDiacriticalWeb.Endpoint do
       iex> %{conn: %{valid: conn}} = c_conn(c)
       iex> %{opt: opt} = c_opt(%{})
       iex> %{status: %{ok: status}} = c_status_ok(%{})
-      iex> %{resp_body: resp_body} = c_resp_body_hello(%{})
+      iex> %{resp_body: resp_body} = c_resp_body_hello()
       iex>
       iex> text_response(hello(conn, opt), status)
       resp_body

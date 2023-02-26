@@ -2,7 +2,7 @@ defmodule NetDiacriticalCase do
   @moduledoc "Defines commonalities for `ExUnit.CaseTemplate` case templates."
   @moduledoc since: "0.1.0"
 
-  use Boundary, deps: [ExUnit]
+  use Boundary, deps: [ExUnit, NetDiacritical]
 
   @typedoc "Represents the current context."
   @typedoc since: "0.1.0"

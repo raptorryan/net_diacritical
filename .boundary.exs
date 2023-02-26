@@ -7,7 +7,8 @@
   NetDiacriticalCase: [
     NetDiacriticalCase,
     NetDiacriticalCase.Supervisor,
-    NetDiacriticalCase.Template
+    NetDiacriticalCase.Template,
+    NetDiacriticalCase.View
   ],
   NetDiacriticalWeb: [NetDiacriticalWeb, NetDiacriticalWeb.Endpoint]
 ]

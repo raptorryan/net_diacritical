@@ -2,7 +2,7 @@ defmodule NetDiacriticalWeb.EndpointTest do
   @moduledoc "Defines an `ExUnit.Case` case."
   @moduledoc since: "0.1.0"
 
-  use ExUnit.Case, async: true
+  use NetDiacriticalCase.View, async: true
 
   import Phoenix.ConnTest
 
@@ -103,11 +103,6 @@ defmodule NetDiacriticalWeb.EndpointTest do
   @spec c_status_ok(context()) :: context_merge()
   defp c_status_ok(c) when is_map(c) do
     %{status: %{ok: 200}}
-  end
-
-  @spec c_resp_body_hello(context()) :: context_merge()
-  defp c_resp_body_hello(c) when is_map(c) do
-    %{resp_body: Core.greet() <> "\n"}
   end
 
   @spec c_topic_pubsub(context()) :: context_merge()

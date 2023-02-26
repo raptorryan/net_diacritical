@@ -2,24 +2,11 @@ defmodule NetDiacriticalCase.SupervisorTest do
   @moduledoc "Defines an `ExUnit.Case` case."
   @moduledoc since: "0.1.0"
 
-  use ExUnit.Case, async: true
+  use NetDiacriticalCase.Template, async: true
 
   alias NetDiacriticalCase, as: Case
 
   alias Case.Supervisor
-
-  @typedoc "Represents the current context."
-  @typedoc since: "0.1.0"
-  @type context() :: Case.context()
-
-  @typedoc "Represents the context merge value."
-  @typedoc since: "0.1.0"
-  @type context_merge() :: Case.context_merge()
-
-  @spec c_context(context()) :: context_merge()
-  defp c_context(c) when is_map(c) do
-    %{context: %{invalid: [], valid: %{}}}
-  end
 
   doctest Supervisor, import: true
 

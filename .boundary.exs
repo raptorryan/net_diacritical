@@ -6,6 +6,7 @@
   ],
   NetDiacriticalCase: [
     NetDiacriticalCase,
+    NetDiacriticalCase.Conn,
     NetDiacriticalCase.Supervisor,
     NetDiacriticalCase.Template,
     NetDiacriticalCase.View

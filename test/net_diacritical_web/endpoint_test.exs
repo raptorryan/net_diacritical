@@ -2,9 +2,7 @@ defmodule NetDiacriticalWeb.EndpointTest do
   @moduledoc "Defines an `ExUnit.Case` case."
   @moduledoc since: "0.1.0"
 
-  use NetDiacriticalCase.View, async: true
-
-  import Phoenix.ConnTest
+  use NetDiacriticalCase.Conn, async: true
 
   alias NetDiacritical, as: Core
   alias NetDiacriticalCase, as: Case
@@ -83,16 +81,6 @@ defmodule NetDiacriticalWeb.EndpointTest do
   @spec c_err(context()) :: context_merge()
   defp c_err(c) when is_map(c) do
     %{err: {:error, {:already_started, Process.whereis(Endpoint)}}}
-  end
-
-  @spec c_conn(context()) :: context_merge()
-  defp c_conn(c) when is_map(c) do
-    %{
-      conn: %{
-        invalid: %{},
-        valid: build_conn(:get, c[:uri][:string] || c[:request_path])
-      }
-    }
   end
 
   @spec c_opt(context()) :: context_merge()

@@ -20,6 +20,21 @@ defmodule NetDiacriticalCase.View do
 
   ## Example
 
+      iex> %{assigns: _assigns} = c_assigns_greeting()
+
+  """
+  @doc since: "0.2.0"
+  @spec c_assigns_greeting() :: context_merge()
+  @spec c_assigns_greeting(context()) :: context_merge()
+  def c_assigns_greeting(c \\ %{}) when is_map(c) do
+    %{assigns: %{invalid: {}, valid: [greeting: Core.greet()]}}
+  end
+
+  @doc """
+  Defines a map of fixtures to be merged into an `ExUnit` context.
+
+  ## Example
+
       iex> %{resp_body: _resp_body} = c_resp_body_hello()
 
   """

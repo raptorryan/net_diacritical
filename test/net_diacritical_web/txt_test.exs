@@ -4,24 +4,9 @@ defmodule NetDiacriticalWeb.TXTTest do
 
   use NetDiacriticalCase.View, async: true
 
-  alias NetDiacritical, as: Core
-  alias NetDiacriticalCase, as: Case
   alias NetDiacriticalWeb, as: Web
 
   alias Web.TXT
-
-  @typedoc "Represents the current context."
-  @typedoc since: "0.2.0"
-  @type context() :: Case.context()
-
-  @typedoc "Represents the context merge value."
-  @typedoc since: "0.2.0"
-  @type context_merge() :: Case.context_merge()
-
-  @spec c_assigns_greeting(context()) :: context_merge()
-  defp c_assigns_greeting(c) when is_map(c) do
-    %{assigns: %{invalid: {}, valid: [greeting: Core.greet()]}}
-  end
 
   doctest TXT
 

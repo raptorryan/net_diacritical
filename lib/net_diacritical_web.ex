@@ -2,7 +2,15 @@ defmodule NetDiacriticalWeb do
   @moduledoc "Defines commonalities for `Phoenix` modules."
   @moduledoc since: "0.1.0"
 
-  use Boundary, deps: [NetDiacritical, Phoenix, Phoenix.PubSub, Plug]
+  use Boundary,
+    deps: [
+      EEx.Engine,
+      NetDiacritical,
+      Phoenix,
+      Phoenix.PubSub,
+      Phoenix.Template,
+      Plug
+    ]
 
   @typedoc "Represents the connection."
   @typedoc since: "0.1.0"

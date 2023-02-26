@@ -13,6 +13,7 @@
   NetDiacriticalWeb: [
     NetDiacriticalWeb,
     NetDiacriticalWeb.Endpoint,
-    NetDiacriticalWeb.TXT
+    NetDiacriticalWeb.TXT,
+    NetDiacriticalWeb.TXT.Page
   ]
 ]

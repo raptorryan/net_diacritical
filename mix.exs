@@ -43,6 +43,8 @@ defmodule NetDiacritical.MixProject do
   @typedoc since: "0.1.0"
   @type application() :: [application_keyword()]
 
+  @static_path "priv/net_diacritical_web/static/"
+
   @spec groups_for_modules(env()) :: groups_for_modules()
   defp groups_for_modules(:dev) do
     ".boundary.exs" |> Code.eval_file() |> elem(0)
@@ -87,7 +89,9 @@ defmodule NetDiacritical.MixProject do
           "cmd tail -n +2 boundary.exs > .boundary.exs",
           "cmd rm boundary.exs"
         ],
-        credo: "credo --config-name app"
+        credo: "credo --config-name app",
+        "phx.digest": "phx.digest " <> @static_path,
+        "phx.digest.clean": "phx.digest.clean --output " <> @static_path
       ],
       app: :net_diacritical,
       boundary: [default: [type: :strict]],

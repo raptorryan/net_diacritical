@@ -11,6 +11,7 @@ config :net_diacritical, env: [prod: true]
 
 config :net_diacritical, Endpoint,
   adapter: Bandit.PhoenixAdapter,
+  cache_static_manifest: "priv/net_diacritical_web/static/cache_manifest.json",
   force_ssl: [
     host: nil,
     rewrite_on: ~w[x_forwarded_host x_forwarded_port x_forwarded_proto]a

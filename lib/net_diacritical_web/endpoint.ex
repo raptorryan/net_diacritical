@@ -39,5 +39,10 @@ defmodule NetDiacriticalWeb.Endpoint do
     conn |> Phoenix.Controller.accepts(["txt", "text"]) |> Page.call(:hello)
   end
 
+  plug Plug.Static,
+    at: "/",
+    from: {:net_diacritical, "priv/net_diacritical_web/static"},
+    only: Web.static_path()
+
   plug Router
 end

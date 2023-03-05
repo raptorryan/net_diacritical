@@ -53,7 +53,10 @@ defmodule NetDiacriticalWeb.TXT do
   @doc since: "0.2.0"
   defmacro __using__(opt) when is_list(opt) do
     quote do
-      use Phoenix.VerifiedRoutes, endpoint: Endpoint, router: Router
+      use Phoenix.VerifiedRoutes,
+        endpoint: Endpoint,
+        router: Router,
+        statics: Web.static_path()
 
       import unquote(__MODULE__)
     end

@@ -10,6 +10,7 @@ config :logger, level: :warning
 config :net_diacritical, env: [test: true]
 
 config :net_diacritical, Endpoint,
+  cache_static_manifest: nil,
   http: [port: 4_022],
   https: [port: 4_023],
   url: [host: "localhost", path: "/", port: 4_003, scheme: "https"]

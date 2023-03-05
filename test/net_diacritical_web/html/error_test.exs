@@ -1,14 +1,14 @@
-defmodule NetDiacriticalWeb.TXT.ErrorTest do
+defmodule NetDiacriticalWeb.HTML.ErrorTest do
   @moduledoc "Defines an `ExUnit.Case` case."
-  @moduledoc since: "0.2.0"
+  @moduledoc since: "0.3.0"
 
   use NetDiacriticalCase.View, async: true
 
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.TXT
+  alias Web.HTML
 
-  alias TXT.Error
+  alias HTML.Error
 
   describe "__mix_recompile__?/0" do
     import Error, only: [__mix_recompile__?: 0]
@@ -19,7 +19,7 @@ defmodule NetDiacriticalWeb.TXT.ErrorTest do
   end
 
   describe "404/1" do
-    setup [:c_assigns_empty, :c_resp_body_404]
+    setup ~w[c_assigns_empty c_resp_body_404 c_resp_body_to_html]a
 
     test "success", %{assigns: assigns, resp_body: resp_body} do
       assert function_exported?(Error, :"404", 1)
@@ -28,7 +28,7 @@ defmodule NetDiacriticalWeb.TXT.ErrorTest do
   end
 
   describe "500/1" do
-    setup [:c_assigns_empty, :c_resp_body_500]
+    setup ~w[c_assigns_empty c_resp_body_500 c_resp_body_to_html]a
 
     test "success", %{assigns: assigns, resp_body: resp_body} do
       assert function_exported?(Error, :"500", 1)

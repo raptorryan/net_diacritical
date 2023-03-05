@@ -22,6 +22,30 @@ defmodule NetDiacriticalCase.ViewTest do
     end
   end
 
+  describe "c_assigns_empty/0" do
+    import View, only: [c_assigns_empty: 0]
+
+    test "success" do
+      assert %{assigns: _assigns} = c_assigns_empty()
+    end
+  end
+
+  describe "c_assigns_empty/1" do
+    import View, only: [c_assigns_empty: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_assigns_empty(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{assigns: _assigns} = c_assigns_empty(context.valid)
+    end
+  end
+
   describe "c_assigns_greeting/0" do
     import View, only: [c_assigns_greeting: 0]
 
@@ -43,6 +67,54 @@ defmodule NetDiacriticalCase.ViewTest do
 
     test "success", %{context: context} do
       assert %{assigns: _assigns} = c_assigns_greeting(context.valid)
+    end
+  end
+
+  describe "c_resp_body_404/0" do
+    import View, only: [c_resp_body_404: 0]
+
+    test "success" do
+      assert %{resp_body: _resp_body} = c_resp_body_404()
+    end
+  end
+
+  describe "c_resp_body_404/1" do
+    import View, only: [c_resp_body_404: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_resp_body_404(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{resp_body: _resp_body} = c_resp_body_404(context.valid)
+    end
+  end
+
+  describe "c_resp_body_500/0" do
+    import View, only: [c_resp_body_500: 0]
+
+    test "success" do
+      assert %{resp_body: _resp_body} = c_resp_body_500()
+    end
+  end
+
+  describe "c_resp_body_500/1" do
+    import View, only: [c_resp_body_500: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_resp_body_500(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{resp_body: _resp_body} = c_resp_body_500(context.valid)
     end
   end
 

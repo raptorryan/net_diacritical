@@ -17,6 +17,7 @@
     NetDiacriticalWeb.Controller.Page,
     NetDiacriticalWeb.Endpoint,
     NetDiacriticalWeb.HTML,
+    NetDiacriticalWeb.HTML.Error,
     NetDiacriticalWeb.HTML.Page,
     NetDiacriticalWeb.Router,
     NetDiacriticalWeb.TXT,

@@ -4,7 +4,7 @@ alias NetDiacritical, as: Core
 alias NetDiacriticalWeb, as: Web
 
 alias Core.PubSub
-alias Web.{Endpoint, TXT}
+alias Web.{Endpoint, HTML, TXT}
 
 config :logger, level: :info
 config :net_diacritical, env: [prod: true]
@@ -31,7 +31,7 @@ config :net_diacritical, Endpoint,
     ]
   ],
   pubsub_server: PubSub,
-  render_errors: [formats: [txt: TXT.Error]],
+  render_errors: [formats: [html: HTML.Error, txt: TXT.Error]],
   secret_key_base:
     "IsibqnyVMpzaQcfSobnHw1KgaAIbVCh0ko1PFgDen0RnTS6PZBfPFsZ2rDhBQTUW",
   url: [host: nil, path: "/", port: 443, scheme: "https"]

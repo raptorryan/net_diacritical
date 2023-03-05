@@ -4,7 +4,9 @@ defmodule NetDiacriticalWeb.Controller do
 
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.{Endpoint, Router}
+  alias Web.{Endpoint, HTML, Router}
+
+  alias HTML.Layout
 
   @typedoc "Represents the connection."
   @typedoc since: "0.2.0"
@@ -47,6 +49,7 @@ defmodule NetDiacriticalWeb.Controller do
       use Phoenix.Controller, Keyword.merge([put_default_views: false], opt)
       use Phoenix.VerifiedRoutes, endpoint: Endpoint, router: Router
 
+      plug :put_layout, html: {Layout, :app}
       plug :put_new_view, opt[:view]
     end
   end

@@ -93,4 +93,22 @@ defmodule NetDiacriticalCase.ViewTest do
       assert %{resp_body: _resp_body} = c_resp_body_hello(context.valid)
     end
   end
+
+  describe "c_resp_body_to_html/1" do
+    import View, only: [c_resp_body_to_html: 1]
+
+    setup do
+      %{context: %{invalid: %{resp_body: ~C""}, valid: %{resp_body: ""}}}
+    end
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_resp_body_to_html(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{resp_body: _resp_body} = c_resp_body_to_html(context.valid)
+    end
+  end
 end

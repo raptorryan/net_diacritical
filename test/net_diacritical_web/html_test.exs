@@ -4,25 +4,11 @@ defmodule NetDiacriticalWeb.HTMLTest do
 
   use NetDiacriticalCase.View, async: true
 
-  alias NetDiacriticalCase, as: Case
   alias NetDiacriticalWeb, as: Web
 
   alias Web.HTML
 
   doctest HTML
-
-  @typedoc "Represents the current context."
-  @typedoc since: "0.3.0"
-  @type context() :: Case.context()
-
-  @typedoc "Represents the context merge value."
-  @typedoc since: "0.3.0"
-  @type context_merge() :: Case.context_merge()
-
-  @spec c_resp_body_to_html(context()) :: context_merge()
-  defp c_resp_body_to_html(%{resp_body: resp_body}) when is_binary(resp_body) do
-    %{resp_body: {:safe, ["<span>", String.trim(resp_body), "</span>\n"]}}
-  end
 
   describe "embed_templates/1" do
     import HTML, only: [embed_templates: 1]

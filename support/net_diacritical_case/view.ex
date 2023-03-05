@@ -60,6 +60,20 @@ defmodule NetDiacriticalCase.View do
     %{resp_body: Core.greet() <> "\n"}
   end
 
+  @doc """
+  Defines a map of fixtures to be merged into an `ExUnit` context.
+
+  ## Example
+
+      iex> %{resp_body: _resp_body} = c_resp_body_to_html(%{resp_body: ""})
+
+  """
+  @doc since: "0.3.0"
+  @spec c_resp_body_to_html(context()) :: context_merge()
+  def c_resp_body_to_html(%{resp_body: resp_body}) when is_binary(resp_body) do
+    %{resp_body: {:safe, ["<span>", String.trim(resp_body), "</span>\n"]}}
+  end
+
   using do
     quote do
       import unquote(__MODULE__)

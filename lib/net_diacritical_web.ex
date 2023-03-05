@@ -8,6 +8,7 @@ defmodule NetDiacriticalWeb do
       Logger,
       NetDiacritical,
       Phoenix,
+      Phoenix.HTML,
       Phoenix.PubSub,
       Phoenix.Template,
       Plug

@@ -100,7 +100,8 @@ defmodule NetDiacritical.MixProject do
         {:dialyxir, "~> 1.2", only: :dev, runtime: false},
         {:ex_doc, "~> 0.29", only: :dev, runtime: false},
         {:jason, "~> 1.4"},
-        {:phoenix, "~> 1.7"}
+        {:phoenix, "~> 1.7"},
+        {:phoenix_html, "~> 3.3"}
       ],
       deps_path: "../../dep",
       dialyzer: [ignore_warnings: ".dialyzer.exs"],

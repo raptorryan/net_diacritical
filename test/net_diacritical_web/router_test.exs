@@ -4,11 +4,39 @@ defmodule NetDiacriticalWeb.RouterTest do
 
   use NetDiacriticalCase.Conn, async: true
 
+  alias NetDiacriticalCase, as: Web
   alias NetDiacriticalWeb, as: Web
 
   alias Web.{Controller, Router}
 
   alias Controller.Page
+
+  @typedoc "Represents the current context."
+  @typedoc since: "0.3.0"
+  @type context() :: Case.context()
+
+  @typedoc "Represents the context merge value."
+  @typedoc since: "0.3.0"
+  @type context_merge() :: Case.context_merge()
+
+  @spec c_conn_format_html(context()) :: context_merge()
+  defp c_conn_format_html(%{conn: %{valid: %Plug.Conn{} = conn} = c}) do
+    %{conn: %{c | valid: Phoenix.Controller.put_format(conn, "html")}}
+  end
+
+  @spec c_conn_session(context()) :: context_merge()
+  defp c_conn_session(%{conn: %{valid: %Plug.Conn{} = conn} = c}) do
+    %{
+      conn: %{
+        c
+        | valid:
+            [store: :cookie, key: "_key", signing_salt: ""]
+            |> Plug.Session.init()
+            |> then(&Plug.Session.call(conn, &1))
+            |> Plug.Conn.fetch_session()
+      }
+    }
+  end
 
   describe "__routes__/0" do
     import Router, only: [__routes__: 0]
@@ -56,6 +84,27 @@ defmodule NetDiacriticalWeb.RouterTest do
 
     test "success" do
       assert __verify_route__(["hello"]) == {nil, false}
+    end
+  end
+
+  describe "browser/2" do
+    import Router, only: [browser: 2]
+
+    setup [
+      :c_request_path_hello,
+      :c_conn,
+      :c_conn_format_html,
+      :c_conn_session,
+      :c_opt
+    ]
+
+    test "Plug.Conn.WrapperError", %{conn: conn, opt: opt} do
+      assert_raise Plug.Conn.WrapperError, fn -> browser(conn.invalid, opt) end
+    end
+
+    test "success", %{conn: conn, opt: opt} do
+      assert %Plug.Conn{private: %{phoenix_format: "html"}} =
+               browser(conn.valid, opt)
     end
   end
 

@@ -4,7 +4,7 @@ defmodule NetDiacriticalWeb.HTML do
 
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.{Endpoint, Router}
+  alias Web.{Endpoint, Router, Token}
 
   @doc """
   Compiles a function for each template in the given `pattern`.
@@ -61,6 +61,8 @@ defmodule NetDiacriticalWeb.HTML do
 
       import unquote(__MODULE__)
       import Phoenix.HTML
+      import Phoenix.Controller, only: [get_csrf_token: 0]
+      import Token, only: [sign: 1]
     end
   end
 end

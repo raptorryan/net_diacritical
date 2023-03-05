@@ -35,6 +35,21 @@ defmodule NetDiacriticalCase.View do
 
   ## Example
 
+      iex> %{resp_body: _resp_body} = c_resp_body_goodbye()
+
+  """
+  @doc since: "0.3.0"
+  @spec c_resp_body_goodbye() :: context_merge()
+  @spec c_resp_body_goodbye(context()) :: context_merge()
+  def c_resp_body_goodbye(c \\ %{}) when is_map(c) do
+    %{resp_body: "Goodbye, world!\n"}
+  end
+
+  @doc """
+  Defines a map of fixtures to be merged into an `ExUnit` context.
+
+  ## Example
+
       iex> %{resp_body: _resp_body} = c_resp_body_hello()
 
   """

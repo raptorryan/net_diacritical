@@ -1,0 +1,1 @@
+<span><%= assigns[:farewell] || "Goodbye, world!" %></span>

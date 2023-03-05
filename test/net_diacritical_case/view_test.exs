@@ -46,6 +46,30 @@ defmodule NetDiacriticalCase.ViewTest do
     end
   end
 
+  describe "c_resp_body_goodbye/0" do
+    import View, only: [c_resp_body_goodbye: 0]
+
+    test "success" do
+      assert %{resp_body: _resp_body} = c_resp_body_goodbye()
+    end
+  end
+
+  describe "c_resp_body_goodbye/1" do
+    import View, only: [c_resp_body_goodbye: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn ->
+        c_resp_body_goodbye(context.invalid)
+      end
+    end
+
+    test "success", %{context: context} do
+      assert %{resp_body: _resp_body} = c_resp_body_goodbye(context.valid)
+    end
+  end
+
   describe "c_resp_body_hello/0" do
     import View, only: [c_resp_body_hello: 0]
 

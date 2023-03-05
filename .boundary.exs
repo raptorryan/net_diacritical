@@ -23,6 +23,7 @@
     NetDiacriticalWeb.Router,
     NetDiacriticalWeb.TXT,
     NetDiacriticalWeb.TXT.Error,
-    NetDiacriticalWeb.TXT.Page
+    NetDiacriticalWeb.TXT.Page,
+    NetDiacriticalWeb.Token
   ]
 ]

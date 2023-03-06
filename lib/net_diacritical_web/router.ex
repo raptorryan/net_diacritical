@@ -6,7 +6,7 @@ defmodule NetDiacriticalWeb.Router do
 
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.{Controller, HTML}
+  alias Web.{Controller, Endpoint, HTML}
 
   @typedoc "Represents the connection."
   @typedoc since: "0.3.0"
@@ -15,6 +15,8 @@ defmodule NetDiacriticalWeb.Router do
   @typedoc "Represents the connection option."
   @typedoc since: "0.3.0"
   @type opt() :: Web.opt()
+
+  @config Phoenix.Endpoint.Supervisor.config(:net_diacritical, Endpoint)
 
   @spec put_csp_nonce(conn(), opt()) :: conn()
   defp put_csp_nonce(%Plug.Conn{} = conn, _opt) do
@@ -26,6 +28,13 @@ defmodule NetDiacriticalWeb.Router do
 
   @spec put_secure_headers(conn(), opt()) :: conn()
   defp put_secure_headers(%Plug.Conn{assigns: %{nonce: nonce}} = conn, _opt) do
+    cross_origin_embedder_policy =
+      if @config[:code_reloader] do
+        "unsafe-none"
+      else
+        "require-corp"
+      end
+
     put_secure_browser_headers(
       conn,
       %{
@@ -40,7 +49,7 @@ defmodule NetDiacriticalWeb.Router do
             "script-src 'self' 'unsafe-inline' 'nonce-#{nonce}'; " <>
             "style-src 'self' 'nonce-#{nonce}'; " <>
             "upgrade-insecure-requests",
-        "cross-origin-embedder-policy" => "require-corp",
+        "cross-origin-embedder-policy" => cross_origin_embedder_policy,
         "cross-origin-opener-policy" => "same-origin",
         "cross-origin-resource-policy" => "same-origin",
         "permissions-policy" =>

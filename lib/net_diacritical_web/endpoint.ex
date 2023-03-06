@@ -44,6 +44,14 @@ defmodule NetDiacriticalWeb.Endpoint do
     from: {:net_diacritical, "priv/net_diacritical_web/static"},
     only: Web.static_path()
 
+  if code_reloading? do
+    socket "/phoenix/live_reload/socket/net_diacritical/endpoint",
+           Phoenix.LiveReloader.Socket
+
+    plug Phoenix.LiveReloader
+    plug Phoenix.CodeReloader
+  end
+
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],

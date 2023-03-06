@@ -9,6 +9,7 @@ defmodule NetDiacriticalWeb do
       NetDiacritical,
       Phoenix,
       Phoenix.HTML,
+      Phoenix.LiveReloader,
       Phoenix.PubSub,
       Phoenix.Template,
       Plug

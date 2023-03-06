@@ -105,7 +105,8 @@ defmodule NetDiacritical.MixProject do
         {:ex_doc, "~> 0.29", only: :dev, runtime: false},
         {:jason, "~> 1.4"},
         {:phoenix, "~> 1.7"},
-        {:phoenix_html, "~> 3.3"}
+        {:phoenix_html, "~> 3.3"},
+        {:phoenix_live_reload, "~> 1.4", runtime: Mix.env() == :dev}
       ],
       deps_path: "../../dep",
       dialyzer: [ignore_warnings: ".dialyzer.exs"],

@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./js/**/*.js", "../../lib/*_web.ex", "../../lib/*_web/**/*.*ex"],
   plugins: [
@@ -6,4 +8,11 @@ module.exports = {
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/typography"),
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Inter var"', "Inter", ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
 };

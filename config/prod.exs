@@ -10,9 +10,12 @@ config :esbuild,
   net_diacritical_web: [
     args: [
       "js/app.js",
+      "vendor/inter/inter.css",
+      "--loader:.woff2=file",
+      "--loader:.woff=file",
       "--bundle",
       "--target=es2017",
-      "--outdir=../../priv/net_diacritical_web/static/asset/js"
+      "--outdir=../../priv/net_diacritical_web/static/asset"
     ],
     cd: Path.expand("../asset/net_diacritical_web", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../../../dep", __DIR__)}

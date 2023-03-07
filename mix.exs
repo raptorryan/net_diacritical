@@ -102,6 +102,7 @@ defmodule NetDiacritical.MixProject do
         {:boundary, "~> 0.9", runtime: false},
         {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
         {:dialyxir, "~> 1.2", only: :dev, runtime: false},
+        {:esbuild, "~> 0.6", runtime: Mix.env() == :dev},
         {:ex_doc, "~> 0.29", only: :dev, runtime: false},
         {:jason, "~> 1.4"},
         {:phoenix, "~> 1.7"},

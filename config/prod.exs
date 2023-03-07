@@ -6,6 +6,20 @@ alias NetDiacriticalWeb, as: Web
 alias Core.PubSub
 alias Web.{Endpoint, HTML, TXT}
 
+config :esbuild,
+  net_diacritical_web: [
+    args: [
+      "css/app.css",
+      "js/app.js",
+      "--bundle",
+      "--target=es2017",
+      "--outdir=../../priv/net_diacritical_web/static/asset"
+    ],
+    cd: Path.expand("../asset/net_diacritical_web", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../../../dep", __DIR__)}
+  ],
+  version: "0.17.11"
+
 config :logger, level: :info
 config :net_diacritical, env: [prod: true]
 

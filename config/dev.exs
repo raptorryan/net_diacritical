@@ -15,6 +15,7 @@ config :net_diacritical, Endpoint,
   debug_errors: true,
   http: [port: 4_024],
   https: [port: 4_025],
+  force_watchers: true,
   live_reload: [
     patterns: [
       ~r/lib\/net_diacritical_web\/(?:controller|html|txt)\/.*(?:ex)$/,
@@ -22,6 +23,13 @@ config :net_diacritical, Endpoint,
     ],
     suffix: "/net_diacritical/endpoint"
   ],
-  url: [host: "localhost", path: "/", port: 4_005, scheme: "https"]
+  url: [host: "localhost", path: "/", port: 4_005, scheme: "https"],
+  watchers: [
+    esbuild: {
+      Esbuild,
+      :install_and_run,
+      [:net_diacritical_web, ["--sourcemap=inline", "--watch"]]
+    }
+  ]
 
 config :phoenix, :stacktrace_depth, 32

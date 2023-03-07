@@ -84,9 +84,19 @@ defmodule NetDiacritical.MixProject do
   def project() do
     [
       aliases: [
-        "asset.build": "esbuild net_diacritical_web",
-        "asset.deploy": ["esbuild net_diacritical_web --minify", "phx.digest"],
-        "asset.setup": "esbuild.install --if-missing",
+        "asset.build": [
+          "esbuild net_diacritical_web",
+          "tailwind net_diacritical_web"
+        ],
+        "asset.deploy": [
+          "esbuild net_diacritical_web --minify",
+          "tailwind net_diacritical_web --minify",
+          "phx.digest"
+        ],
+        "asset.setup": [
+          "esbuild.install --if-missing",
+          "tailwind.install --if-missing"
+        ],
         "boundary.ex_doc_groups": [
           "boundary.ex_doc_groups",
           "cmd tail -n +2 boundary.exs > .boundary.exs",

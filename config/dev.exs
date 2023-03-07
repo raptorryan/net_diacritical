@@ -29,7 +29,8 @@ config :net_diacritical, Endpoint,
       Esbuild,
       :install_and_run,
       [:net_diacritical_web, ["--sourcemap=inline", "--watch"]]
-    }
+    },
+    tailwind: {Tailwind, :install_and_run, [:net_diacritical_web, ["--watch"]]}
   ]
 
 config :phoenix, :stacktrace_depth, 32

@@ -9,11 +9,10 @@ alias Web.{Endpoint, HTML, TXT}
 config :esbuild,
   net_diacritical_web: [
     args: [
-      "css/app.css",
       "js/app.js",
       "--bundle",
       "--target=es2017",
-      "--outdir=../../priv/net_diacritical_web/static/asset"
+      "--outdir=../../priv/net_diacritical_web/static/asset/js"
     ],
     cd: Path.expand("../asset/net_diacritical_web", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../../../dep", __DIR__)}
@@ -52,3 +51,14 @@ config :net_diacritical, Endpoint,
   url: [host: nil, path: "/", port: 443, scheme: "https"]
 
 config :phoenix, :json_library, Jason
+
+config :tailwind,
+  net_diacritical_web: [
+    args: [
+      "--config=tailwind.config.js",
+      "--input=css/app.css",
+      "--output=../../priv/net_diacritical_web/static/asset/css/app.css"
+    ],
+    cd: Path.expand("../asset/net_diacritical_web", __DIR__)
+  ],
+  version: "3.2.7"

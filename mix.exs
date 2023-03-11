@@ -121,6 +121,7 @@ defmodule NetDiacritical.MixProject do
         {:phoenix, "~> 1.7"},
         {:phoenix_html, "~> 3.3"},
         {:phoenix_live_reload, "~> 1.4", runtime: Mix.env() == :dev},
+        {:phoenix_live_view, "~> 0.18"},
         {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
       ],
       deps_path: "../../dep",

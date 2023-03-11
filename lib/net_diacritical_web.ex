@@ -8,6 +8,7 @@ defmodule NetDiacriticalWeb do
       Logger,
       NetDiacritical,
       Phoenix,
+      Phoenix.Component,
       Phoenix.HTML,
       Phoenix.LiveReloader,
       Phoenix.LiveView,

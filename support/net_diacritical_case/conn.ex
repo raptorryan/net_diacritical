@@ -130,7 +130,7 @@ defmodule NetDiacriticalCase.Conn do
     quote do
       import unquote(__MODULE__)
       import NetDiacriticalCase.View
-      import Phoenix.ConnTest
+      import Phoenix.{ConnTest, LiveViewTest}
 
       @endpoint Endpoint
     end

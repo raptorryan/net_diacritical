@@ -21,6 +21,7 @@
     NetDiacriticalWeb.HTML.Layout,
     NetDiacriticalWeb.HTML.Page,
     NetDiacriticalWeb.LiveView,
+    NetDiacriticalWeb.LiveView.Hello,
     NetDiacriticalWeb.Router,
     NetDiacriticalWeb.TXT,
     NetDiacriticalWeb.TXT.Error,

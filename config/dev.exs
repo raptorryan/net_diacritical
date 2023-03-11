@@ -19,6 +19,7 @@ config :net_diacritical, Endpoint,
   live_reload: [
     patterns: [
       ~r/lib\/net_diacritical_web\/(?:controller|html|txt)\/.*(?:ex)$/,
+      ~r/lib\/net_diacritical_web\/live_view\/.*(?:ex)$/,
       ~r/priv\/net_diacritical_web\/static\/.*(?:css|ico|js|txt)$/
     ],
     suffix: "/net_diacritical/endpoint"

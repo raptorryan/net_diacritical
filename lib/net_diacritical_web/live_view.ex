@@ -40,6 +40,28 @@ defmodule NetDiacriticalWeb.LiveView do
   @typedoc since: "0.4.0"
   @type hook() :: {status(), socket()}
 
+  @typedoc "Represents the opt keyword."
+  @typedoc since: "0.4.0"
+  @type opt_keyword() ::
+          {:layout, {module, String.t()}}
+          | {:temporary_assigns, Keyword.t()}
+
+  @typedoc "Represents the opt."
+  @typedoc since: "0.4.0"
+  @type opt() :: [opt_keyword()]
+
+  @typedoc "Represents the mount."
+  @typedoc since: "0.4.0"
+  @type mount() :: {:ok, socket()} | {:ok, socket(), opt()}
+
+  @typedoc "Represents the assigns."
+  @typedoc since: "0.4.0"
+  @type assigns() :: Phoenix.LiveView.Socket.assigns()
+
+  @typedoc "Represents the render."
+  @typedoc since: "0.4.0"
+  @type render() :: Phoenix.LiveView.Rendered.t()
+
   @spec maybe_get_csp_nonce(socket()) :: csp_nonce?()
   defp maybe_get_csp_nonce(%Phoenix.LiveView.Socket{} = socket) do
     if connected?(socket) do

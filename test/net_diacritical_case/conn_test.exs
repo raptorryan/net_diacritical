@@ -135,6 +135,28 @@ defmodule NetDiacriticalCase.ConnTest do
     end
   end
 
+  describe "c_param/0" do
+    import Conn, only: [c_param: 0]
+
+    test "success" do
+      assert %{param: _param} = c_param()
+    end
+  end
+
+  describe "c_param/1" do
+    import Conn, only: [c_param: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn -> c_param(context.invalid) end
+    end
+
+    test "success", %{context: context} do
+      assert %{param: _param} = c_param(context.valid)
+    end
+  end
+
   describe "c_request_path_hello/0" do
     import Conn, only: [c_request_path_hello: 0]
 
@@ -157,6 +179,28 @@ defmodule NetDiacriticalCase.ConnTest do
     test "success", %{context: context} do
       assert %{request_path: _request_path} =
                c_request_path_hello(context.valid)
+    end
+  end
+
+  describe "c_session/0" do
+    import Conn, only: [c_session: 0]
+
+    test "success" do
+      assert %{session: _session} = c_session()
+    end
+  end
+
+  describe "c_session/1" do
+    import Conn, only: [c_session: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn -> c_session(context.invalid) end
+    end
+
+    test "success", %{context: context} do
+      assert %{session: _session} = c_session(context.valid)
     end
   end
 

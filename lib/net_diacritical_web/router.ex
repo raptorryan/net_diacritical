@@ -4,9 +4,11 @@ defmodule NetDiacriticalWeb.Router do
 
   use Phoenix.Router, helpers: false
 
+  import Phoenix.LiveView.Router
+
   alias NetDiacriticalWeb, as: Web
 
-  alias Web.{Controller, Endpoint, HTML}
+  alias Web.{Controller, Endpoint, HTML, LiveView}
 
   @typedoc "Represents the connection."
   @typedoc since: "0.3.0"
@@ -71,6 +73,7 @@ defmodule NetDiacriticalWeb.Router do
   pipeline :browser do
     plug :accepts, ["html", "htm"]
     plug :fetch_session
+    plug :fetch_live_flash
     plug :put_root_layout, {HTML.Layout, :root}
     plug :protect_from_forgery
     plug :put_csp_nonce
@@ -84,7 +87,7 @@ defmodule NetDiacriticalWeb.Router do
   scope "/" do
     pipe_through :browser
 
-    get "/", Controller.Page, :hello
+    live "/", LiveView.Hello
   end
 
   scope "/" do

@@ -27,7 +27,7 @@ defmodule NetDiacriticalCase.View do
   @spec c_assigns_empty() :: context_merge()
   @spec c_assigns_empty(context()) :: context_merge()
   def c_assigns_empty(c \\ %{}) when is_map(c) do
-    %{assigns: []}
+    %{assigns: %{}}
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule NetDiacriticalCase.View do
   @spec c_assigns_greeting() :: context_merge()
   @spec c_assigns_greeting(context()) :: context_merge()
   def c_assigns_greeting(c \\ %{}) when is_map(c) do
-    %{assigns: %{invalid: {}, valid: [greeting: Core.greet()]}}
+    %{assigns: %{invalid: {}, valid: %{greeting: Core.greet()}}}
   end
 
   @doc """

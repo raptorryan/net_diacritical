@@ -113,6 +113,28 @@ defmodule NetDiacriticalCase.ConnTest do
     end
   end
 
+  describe "c_opt/0" do
+    import Conn, only: [c_opt: 0]
+
+    test "success" do
+      assert %{opt: _opt} = c_opt()
+    end
+  end
+
+  describe "c_opt/1" do
+    import Conn, only: [c_opt: 1]
+
+    setup :c_context
+
+    test "FunctionClauseError", %{context: context} do
+      assert_raise FunctionClauseError, fn -> c_opt(context.invalid) end
+    end
+
+    test "success", %{context: context} do
+      assert %{opt: _opt} = c_opt(context.valid)
+    end
+  end
+
   describe "c_request_path_hello/0" do
     import Conn, only: [c_request_path_hello: 0]
 
@@ -135,28 +157,6 @@ defmodule NetDiacriticalCase.ConnTest do
     test "success", %{context: context} do
       assert %{request_path: _request_path} =
                c_request_path_hello(context.valid)
-    end
-  end
-
-  describe "c_opt/0" do
-    import Conn, only: [c_opt: 0]
-
-    test "success" do
-      assert %{opt: _opt} = c_opt()
-    end
-  end
-
-  describe "c_opt/1" do
-    import Conn, only: [c_opt: 1]
-
-    setup :c_context
-
-    test "FunctionClauseError", %{context: context} do
-      assert_raise FunctionClauseError, fn -> c_opt(context.invalid) end
-    end
-
-    test "success", %{context: context} do
-      assert %{opt: _opt} = c_opt(context.valid)
     end
   end
 

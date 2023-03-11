@@ -21,7 +21,7 @@ defmodule NetDiacriticalWeb.HTML.LayoutTest do
 
   @spec c_assigns_inner_content(context()) :: context_merge()
   defp c_assigns_inner_content(c) when is_map(c) do
-    %{assigns: %{invalid: {}, valid: [inner_content: ""]}}
+    %{assigns: %{invalid: {}, valid: %{inner_content: ""}}}
   end
 
   describe "__mix_recompile__?/0" do

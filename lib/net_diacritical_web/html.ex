@@ -51,7 +51,7 @@ defmodule NetDiacriticalWeb.HTML do
       resp_body
 
   """
-  @doc since: "0.2.0"
+  @doc since: "0.3.0"
   defmacro __using__(opt) when is_list(opt) do
     quote do
       use Phoenix.VerifiedRoutes,

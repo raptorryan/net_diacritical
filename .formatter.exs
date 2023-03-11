@@ -3,8 +3,9 @@
   import_deps: [:phoenix, :plug],
   inputs: [
     ".{boundary,credo,dialyzer,formatter}.exs",
-    "{config,lib,support,test}/**/*.{ex,exs}",
+    "{config,lib,support,test}/**/*.{ex,exs,heex}",
     "mix.exs"
   ],
-  line_length: 80
+  line_length: 80,
+  plugins: [Phoenix.LiveView.HTMLFormatter]
 ]

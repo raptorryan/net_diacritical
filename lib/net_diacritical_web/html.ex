@@ -22,7 +22,7 @@ defmodule NetDiacriticalWeb.HTML do
       require Phoenix.Template
 
       Phoenix.Template.compile_all(
-        &(&1 |> Path.basename() |> Path.rootname(".html.eex")),
+        &(&1 |> Path.basename() |> Path.rootname(".html.heex")),
         Path.expand(unquote(opt)[:root] || __DIR__, __DIR__),
         unquote(pattern) <> ".html"
       )
@@ -47,7 +47,7 @@ defmodule NetDiacriticalWeb.HTML do
       iex>
       iex> function_exported?(TestTemplate, :hello, 1)
       true
-      iex> TestTemplate.hello(assigns)
+      iex> render_component(&TestTemplate.hello/1, assigns)
       resp_body
 
   """

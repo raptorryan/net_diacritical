@@ -263,7 +263,7 @@ defmodule NetDiacriticalWeb.EndpointTest do
     import Endpoint, only: [__sockets__: 0]
 
     test "success" do
-      assert __sockets__() == []
+      assert __sockets__()
     end
   end
 

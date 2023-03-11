@@ -47,10 +47,17 @@ config :net_diacritical, Endpoint,
         )
     ]
   ],
+  live_view: [signing_salt: "njOSbB8KYFDwWY3G"],
   pubsub_server: PubSub,
   render_errors: [formats: [html: HTML.Error, txt: TXT.Error]],
   secret_key_base:
     "IsibqnyVMpzaQcfSobnHw1KgaAIbVCh0ko1PFgDen0RnTS6PZBfPFsZ2rDhBQTUW",
+  session: [
+    key: "__Host-session",
+    same_site: "Strict",
+    signing_salt: "JiLge0f4LyjBNyrd",
+    store: :cookie
+  ],
   url: [host: nil, path: "/", port: 443, scheme: "https"]
 
 config :phoenix, :json_library, Jason

@@ -39,6 +39,12 @@ defmodule NetDiacriticalWeb.Endpoint do
     conn |> Phoenix.Controller.accepts(["txt", "text"]) |> Page.call(:hello)
   end
 
+  unless config[:proxy] do
+    socket "/socket/" <> config[:session][:signing_salt],
+           Phoenix.LiveView.Socket,
+           websocket: [connect_info: [session: config[:session]]]
+  end
+
   plug Plug.Static,
     at: "/",
     from: {:net_diacritical, "priv/net_diacritical_web/static"},
@@ -59,12 +65,6 @@ defmodule NetDiacriticalWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  plug Plug.Session,
-    key: "__Host-session",
-    same_site: "Strict",
-    signing_salt: "JiLge0f4LyjBNyrd",
-    store: :cookie
-
+  plug Plug.Session, config[:session]
   plug Router
 end

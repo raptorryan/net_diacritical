@@ -45,13 +45,15 @@ defmodule NetDiacriticalWeb.HTML.LayoutTest do
 
     setup :c_assigns_inner_content
 
-    test "FunctionClauseError", %{assigns: assigns} do
-      assert_raise FunctionClauseError, fn -> app(assigns.invalid) end
+    test "Protocol.UndefinedError", %{assigns: assigns} do
+      assert_raise Protocol.UndefinedError, fn ->
+        render_component(&app/1, assigns.invalid)
+      end
     end
 
     test "success", %{assigns: assigns} do
       assert function_exported?(Layout, :app, 1)
-      assert assigns.valid |> app() |> safe_to_string() =~ "<main>"
+      assert render_component(&app/1, assigns.valid) =~ "<main>"
     end
   end
 
@@ -60,13 +62,15 @@ defmodule NetDiacriticalWeb.HTML.LayoutTest do
 
     setup :c_assigns_inner_content
 
-    test "FunctionClauseError", %{assigns: assigns} do
-      assert_raise FunctionClauseError, fn -> root(assigns.invalid) end
+    test "Protocol.UndefinedError", %{assigns: assigns} do
+      assert_raise Protocol.UndefinedError, fn ->
+        render_component(&root/1, assigns.invalid)
+      end
     end
 
     test "success", %{assigns: assigns} do
       assert function_exported?(Layout, :app, 1)
-      assert assigns.valid |> root() |> safe_to_string() =~ "<!DOCTYPE html>"
+      assert render_component(&root/1, assigns.valid) =~ "<!DOCTYPE html>"
     end
   end
 end

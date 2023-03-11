@@ -31,13 +31,15 @@ defmodule NetDiacriticalWeb.HTML.PageTest do
 
     setup ~w[c_assigns_greeting c_resp_body_hello c_resp_body_to_html]a
 
-    test "FunctionClauseError", %{assigns: assigns} do
-      assert_raise FunctionClauseError, fn -> hello(assigns.invalid) end
+    test "Protocol.UndefinedError", %{assigns: assigns} do
+      assert_raise Protocol.UndefinedError, fn ->
+        render_component(&hello/1, assigns.invalid)
+      end
     end
 
     test "success", %{assigns: assigns, resp_body: resp_body} do
       assert function_exported?(Page, :hello, 1)
-      assert hello(assigns.valid) == resp_body
+      assert render_component(&hello/1, assigns.valid) == resp_body
     end
   end
 end
